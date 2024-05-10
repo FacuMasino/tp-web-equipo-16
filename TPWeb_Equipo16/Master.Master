@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="TPWeb_Equipo16.Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+</head>
+<body>
+    <form id="mainForm" runat="server">
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-xxl">
+                    <a class="navbar-brand" href="#">TPWeb</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contacto</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="buscar" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div>
+            <asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <script src="Scripts/bootstrap.min.js"></script>
+</body>
+</html>
