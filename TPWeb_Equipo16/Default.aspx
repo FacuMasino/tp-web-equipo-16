@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainPlaceHolder" runat="server">
-    <div class='row row-cols-1 row-cols-md-4 g-4'>
+    <div class='row row-cols-1 row-cols-md-4 my-4 g-4'>
         <div class='col'>
             <div class="card">
                 <img src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" class="card-img-top" alt="...">

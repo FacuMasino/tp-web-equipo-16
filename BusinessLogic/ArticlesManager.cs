@@ -20,9 +20,7 @@ namespace BusinessLogicLayer
 
             try
             {
-                _dataAccess.SetQuery(
-                    "select Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio from Articulos"
-                );
+                _dataAccess.SetProcedure("SP_List_Articles");
                 _dataAccess.ExecuteRead();
 
                 while (_dataAccess.Reader.Read())
