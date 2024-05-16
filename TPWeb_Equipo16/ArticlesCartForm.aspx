@@ -8,7 +8,7 @@
         if (0 < ArticlesCart.Count())
         {
     %>
-    <h5>mandalenomaa</h5>
+    <h5>aca va la logica para cargar en el carrito</h5>
     <%
         }
         else
