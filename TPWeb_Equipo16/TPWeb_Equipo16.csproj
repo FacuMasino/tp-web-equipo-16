@@ -64,6 +64,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ArticleReg.aspx" />
+    <Content Include="ArticlesCart.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -93,6 +95,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleReg.aspx.cs">
+      <DependentUpon>ArticleReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArticleReg.aspx.designer.cs">
+      <DependentUpon>ArticleReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArticlesCart.aspx.cs">
+      <DependentUpon>ArticlesCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArticlesCart.aspx.designer.cs">
+      <DependentUpon>ArticlesCart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
