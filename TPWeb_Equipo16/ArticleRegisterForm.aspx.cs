@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TPWeb_Equipo16
 {
-    public partial class ArticlesCart : System.Web.UI.Page
+    public partial class ArticleRegisterForm : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

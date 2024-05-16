@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
+    <Compile Include="ArticlesCart.cs" />
     <Compile Include="Brand.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Image.cs" />

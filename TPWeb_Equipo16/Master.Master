@@ -28,7 +28,7 @@
                         </ul>
                     <div class="d-flex">
                         <button type="button" class="btn me-md-4 mt-2 position-relative">
-                            <a href="ArticlesCart.aspx">
+                            <a href="ArticlesCartForm.aspx">
                                 <i class="bi bi-bag"></i>
                             </a>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">99+

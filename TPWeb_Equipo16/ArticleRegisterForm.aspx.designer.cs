@@ -11,7 +11,7 @@ namespace TPWeb_Equipo16
 {
 
 
-    public partial class ArticlesCart
+    public partial class ArticleRegisterForm
     {
     }
 }
