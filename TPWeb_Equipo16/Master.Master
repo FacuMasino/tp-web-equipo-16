@@ -16,7 +16,7 @@
         <header>
             <nav class="navbar navbar-expand-lg bg-body-tertiary py-4">
                 <div class="container-xxl px-4">
-                    <a class="navbar-brand" href="https://github.com/FacuMasino/tp-web-equipo-16">TP Web Equipo 16</a>
+                    <a class="navbar-brand" href="/">TP Web Equipo 16</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -89,6 +89,23 @@
                 <a class="btn btn-primary w-100" href="ArticlesCartForm.aspx">Ir al carrito
                 </a>
             </div>
+        </div>
+        <div class="container-xxl px-4 fixed-bottom  bg-body-tertiary">
+            <footer class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="Default.aspx" class="nav-link px-2 text-body-secondary">Tienda</a></li>
+                    <li class="nav-item"><a href="ArticlesCardForm.aspx" class="nav-link px-2 text-body-secondary">Ir al carrito</a></li>
+                    <li class="nav-item"><a href="#mainForm" class="nav-link px-2 text-body-secondary">Ir arriba</a></li>
+                </ul>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class="text-center mb-0 text-body-secondary">© 2024 TP Web - Equipo 16</p>
+                    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                        <li class="ms-3">
+                            <a class="text-body-secondary fs-4" href="https://github.com/FacuMasino/tp-web-equipo-16" target="_blank"><i class="bi bi-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
         </div>
     </form>
     <script src="Scripts/bootstrap.min.js"></script>
