@@ -4,6 +4,19 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainPlaceHolder" runat="server">
+    <%
+        if (0 < ArticlesCart.Count())
+        {
+    %>
+    <h5>mandalenomaa</h5>
+    <%
+        }
+        else
+        {
+    %>
     <h5>Todavía no agregaste ningún artículo a tu carrito...</h5>
     <a href="Default.aspx">¡Elegí los productos que desees desde nuestra tienda!</a>
+    <%
+        }
+    %>
 </asp:Content>

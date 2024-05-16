@@ -1,9 +1,33 @@
-﻿using System;
+﻿using BusinessLogicLayer;
+using Domain;
+using System;
+using System.Collections.Generic;
 
 namespace TPWeb_Equipo16
 {
     public partial class Default : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e) { }
+        // ATTRIBUTES
+
+        private ArticlesManager _articlesManager;
+
+        // PROPERTIES
+
+        public List<Article> Articles { get; set; }
+
+        // CONSTRUCT
+
+        public Default()
+        { 
+            _articlesManager = new ArticlesManager();
+            Articles = _articlesManager.List();
+        }
+
+        // EVENTS
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

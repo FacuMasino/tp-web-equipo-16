@@ -2,7 +2,7 @@
 
 namespace Domain
 {
-    internal class ArticlesCart
+    public class ArticlesCart
     {
         // ATTRIBUTES
 
@@ -45,7 +45,7 @@ namespace Domain
                 }
                 else
                 {
-                    return -1;
+                    return -2;
                 }
             }
             else
@@ -71,6 +71,11 @@ namespace Domain
         public void Clear()
         {
             _cart.Clear();
+        }
+
+        public int Count()
+        {
+            return _cart.Count;
         }
     }
 }
