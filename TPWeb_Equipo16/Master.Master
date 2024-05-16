@@ -16,22 +16,21 @@
         <header>
             <nav class="navbar navbar-expand-lg bg-body-tertiary py-4">
                 <div class="container-xxl px-4">
-                    <a class="navbar-brand" href="#">TPWeb</a>
+                    <a class="navbar-brand" href="https://github.com/FacuMasino/tp-web-equipo-16">TP Web Equipo 16</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse justify-content-end navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contacto</a>
+                                <a class="nav-link active" href="Default.aspx">Tienda</a>
                             </li>
                         </ul>
                     <div class="d-flex">
                         <button type="button" class="btn me-md-4 mt-2 position-relative">
-                            <i class="bi bi-bag"></i>
+                            <a href="ArticlesCart.aspx">
+                                <i class="bi bi-bag"></i>
+                            </a>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">99+
                                 <span class="visually-hidden">Productos en el carrito</span>
                             </span>
