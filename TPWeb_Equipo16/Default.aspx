@@ -6,12 +6,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainPlaceHolder" runat="server">
     <div class='row row-cols-1 row-cols-md-4 my-4 g-4'>
         <%
-            foreach (Domain.Article article in Articles)
+            foreach (Article article in Articles)
             {
                 string imageUrl = "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg";
 
-                if (0 < article.Images.Count)
+                if (0 < article.Images.Count && Helper.IsAccesibleImage(article.Images[0].Url))
                 {
+                    System.Diagnostics.Debug.Print(article.Images[0].Url);
                     imageUrl = article.Images[0].Url;
                 }
         %>

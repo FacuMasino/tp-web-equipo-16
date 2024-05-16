@@ -1,5 +1,6 @@
-﻿using System;
-using DataAccessLayer;
+﻿using DataAccessLayer;
+using System;
+using System.Net;
 
 namespace Utilities
 {
@@ -31,6 +32,27 @@ namespace Utilities
             }
 
             return lastId;
+        }
+
+        public static bool IsAccesibleImage(string url)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "HEAD";
+            try
+            {
+                using (var resp = request.GetResponse() as HttpWebResponse)
+                {
+                    if (resp != null && resp.StatusCode == HttpStatusCode.OK)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
