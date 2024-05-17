@@ -25,7 +25,7 @@
                     <p class="card-subtitle mb-2 text-muted fw-bold">$<%:article.Price%></p>
                     <div class='text-end'>
                         <a href='<%= "ArticlesCartForm.aspx?id=" + article.Id %>' class="btn fs-5"><i class="bi bi-cart-plus"></i></a>
-                        <a href="#" class="btn fs-5"><i class="bi bi-eye"></i></a>
+                        <a href="ViewArticle.aspx?id=<%:article.Id%>" class="btn fs-5"><i class="bi bi-eye"></i></a>
                     </div>
                 </div>
             </div>
