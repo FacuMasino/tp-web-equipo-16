@@ -8,14 +8,12 @@ namespace BusinessLogicLayer
         // ATTRIBUTES
 
         private Cart _cart;
-        private Dictionary<Article, int> _amounts; // A prueba, posiblemente reemplazable por _cart.ArticleSets
 
         // CONSTRUCT
 
         public CartManager()
         {
             _cart = new Cart();
-            _amounts = new Dictionary<Article, int>();
         }
 
         // METHODS
@@ -27,58 +25,44 @@ namespace BusinessLogicLayer
 
         public void Add(Article article, int amount = 1)
         {
-            if (_amounts.ContainsKey(article))
+            while (_cart.ArticleSets.Count <= article.Id)
             {
-                _amounts[article] += amount;
+                ArticleSet aux = new ArticleSet();
+                _cart.ArticleSets.Add(aux);
             }
-            else
-            {
-                _amounts.Add(article, amount);
-            }
+
+            ArticleSet articleSet = new ArticleSet();
+            _cart.ArticleSets.Insert(article.Id, articleSet);
+
+            _cart.ArticleSets[article.Id].Id = article.Id;
+            _cart.ArticleSets[article.Id].Code = article.Code;
+            _cart.ArticleSets[article.Id].Name = article.Name;
+            _cart.ArticleSets[article.Id].Price = article.Price;
+            _cart.ArticleSets[article.Id].Description = article.Description;
+            _cart.ArticleSets[article.Id].Brand = article.Brand;
+            _cart.ArticleSets[article.Id].Category = article.Category;
+            _cart.ArticleSets[article.Id].Images = article.Images;
+            _cart.ArticleSets[article.Id].Amount += amount;
         }
 
-        public int Remove(Article article, int amount = 1)
+        public void Remove(Article article, int amount = 1)
         {
-            if (_amounts.ContainsKey(article))
-            {
-                if (amount <= _amounts[article])
-                {
-                    _amounts[article] -= amount;
-                    return amount;
-                }
-                else
-                {
-                    return -2;
-                }
-            }
-            else
-            {
-                return -1;
-            }
+            
         }
 
-        public int Delete(Article article)
+        public void Delete(Article article)
         {
-            if (_amounts.ContainsKey(article))
-            {
-                int amount = _amounts[article];
-                _amounts.Remove(article);
-                return amount;
-            }
-            else
-            {
-                return -1;
-            }
+            
         }
 
         public void Clear()
         {
-            _amounts.Clear();
+            _cart.ArticleSets.Clear();
         }
 
         public int Count()
         {
-            return _amounts.Count;
+            return _cart.ArticleSets.Count;
         }
     }
 }
