@@ -1,46 +1,49 @@
 ﻿using System.Collections.Generic;
+using Domain;
 
-namespace Domain
+namespace BusinessLogicLayer
 {
-    public class ArticlesCart
+    public class CartManager
     {
         // ATTRIBUTES
 
-        private Dictionary<Article, int> _cart;
+        private Cart _cart;
+        private Dictionary<Article, int> _amounts; // A prueba, posiblemente reemplazable por _cart.ArticleSets
 
         // CONSTRUCT
 
-        public ArticlesCart()
+        public CartManager()
         {
-            _cart = new Dictionary<Article, int>();
+            _cart = new Cart();
+            _amounts = new Dictionary<Article, int>();
         }
 
         // METHODS
 
-        public Dictionary<Article, int> List()
+        public List<ArticleSet> List()
         {
-            return _cart;
+            return _cart.ArticleSets;
         }
 
         public void Add(Article article, int amount = 1)
         {
-            if (_cart.ContainsKey(article))
+            if (_amounts.ContainsKey(article))
             {
-                _cart[article] += amount;
+                _amounts[article] += amount;
             }
             else
             {
-                _cart.Add(article, amount);
+                _amounts.Add(article, amount);
             }
         }
 
         public int Remove(Article article, int amount = 1)
         {
-            if (_cart.ContainsKey(article))
+            if (_amounts.ContainsKey(article))
             {
-                if (amount <= _cart[article])
+                if (amount <= _amounts[article])
                 {
-                    _cart[article] -= amount;
+                    _amounts[article] -= amount;
                     return amount;
                 }
                 else
@@ -56,10 +59,10 @@ namespace Domain
 
         public int Delete(Article article)
         {
-            if (_cart.ContainsKey(article))
+            if (_amounts.ContainsKey(article))
             {
-                int amount = _cart[article];
-                _cart.Remove(article);
+                int amount = _amounts[article];
+                _amounts.Remove(article);
                 return amount;
             }
             else
@@ -70,12 +73,12 @@ namespace Domain
 
         public void Clear()
         {
-            _cart.Clear();
+            _amounts.Clear();
         }
 
         public int Count()
         {
-            return _cart.Count;
+            return _amounts.Count;
         }
     }
 }

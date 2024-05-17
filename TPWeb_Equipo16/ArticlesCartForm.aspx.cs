@@ -15,14 +15,14 @@ namespace TPWeb_Equipo16
 
         private Article _article;
         private ArticlesManager _articlesManager;
-        private ArticlesCart _articlesCart;
+        private CartManager _cart;
 
         // PROPERTIES
 
-        public ArticlesCart ArticlesCart
+        public CartManager ArticlesCart
         {
-            get { return _articlesCart; }
-            set { _articlesCart = value; }
+            get { return _cart; }
+            set { _cart = value; }
         }
 
         // CONSTRUCT
@@ -30,19 +30,33 @@ namespace TPWeb_Equipo16
         public ArticlesCartForm()
         {
             _articlesManager = new ArticlesManager();
-            _articlesCart = new ArticlesCart();
+            _cart = new CartManager();
+        }
+
+        // METHODS
+
+        private void RequestAddedArticle()
+        {
+            if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+            {
+                int id = Convert.ToInt32(Request.QueryString["id"]);
+                _article = _articlesManager.Read(id);
+                _cart.Add(_article);
+            }
+        }
+
+        private void BindGridView()
+        {
+            CartGridView.DataSource = _cart.List();
+            CartGridView.DataBind();
         }
 
         // EVENTS
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Request.QueryString["id"]))
-            {
-                int id = Convert.ToInt32(Request.QueryString["id"]);
-                _article = _articlesManager.Read(id);
-                _articlesCart.Add(_article);
-            }
+            RequestAddedArticle();
+            BindGridView();
         }
     }
 }
