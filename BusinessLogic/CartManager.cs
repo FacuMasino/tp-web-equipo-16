@@ -9,6 +9,11 @@ namespace BusinessLogicLayer
 
         private Cart _cart;
 
+        public List<ArticleSet> CurrentArticleSets
+        {
+            set { _cart.ArticleSets = value; }
+        }
+
         // CONSTRUCT
 
         public CartManager()
@@ -23,37 +28,45 @@ namespace BusinessLogicLayer
             return _cart.ArticleSets;
         }
 
+        private bool ArticleExists(int id)
+        {
+            if (_cart.ArticleSets.Find(x => x.Id == id) == null)
+                return false;
+            return true;
+        }
+
+        private ArticleSet GetById(int id)
+        {
+            return _cart.ArticleSets.Find(x => x.Id == id);
+        }
+
         public void Add(Article article, int amount = 1)
         {
-            while (_cart.ArticleSets.Count <= article.Id)
+            if (ArticleExists(article.Id))
             {
-                ArticleSet aux = new ArticleSet();
+                GetById(article.Id).Amount += amount;
+            }
+            else
+            {
+                ArticleSet aux = new ArticleSet
+                {
+                    Id = article.Id,
+                    Code = article.Code,
+                    Name = article.Name,
+                    Price = article.Price,
+                    Description = article.Description,
+                    Brand = article.Brand,
+                    Category = article.Category,
+                    Images = article.Images,
+                    Amount = amount
+                };
                 _cart.ArticleSets.Add(aux);
             }
-
-            ArticleSet articleSet = new ArticleSet();
-            _cart.ArticleSets.Insert(article.Id, articleSet);
-
-            _cart.ArticleSets[article.Id].Id = article.Id;
-            _cart.ArticleSets[article.Id].Code = article.Code;
-            _cart.ArticleSets[article.Id].Name = article.Name;
-            _cart.ArticleSets[article.Id].Price = article.Price;
-            _cart.ArticleSets[article.Id].Description = article.Description;
-            _cart.ArticleSets[article.Id].Brand = article.Brand;
-            _cart.ArticleSets[article.Id].Category = article.Category;
-            _cart.ArticleSets[article.Id].Images = article.Images;
-            _cart.ArticleSets[article.Id].Amount += amount;
         }
 
-        public void Remove(Article article, int amount = 1)
-        {
-            
-        }
+        public void Remove(Article article, int amount = 1) { }
 
-        public void Delete(Article article)
-        {
-            
-        }
+        public void Delete(Article article) { }
 
         public void Clear()
         {

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using BusinessLogicLayer;
 using Domain;
 
@@ -42,6 +38,7 @@ namespace TPWeb_Equipo16
                 int id = Convert.ToInt32(Request.QueryString["id"]);
                 _article = _articlesManager.Read(id);
                 _cartManager.Add(_article);
+                Session["CurrentArticleSets"] = _cartManager.List();
             }
         }
 
@@ -61,10 +58,19 @@ namespace TPWeb_Equipo16
             CartGridView.DataBind();
         }
 
+        private void CheckSession()
+        {
+            if (Session["CurrentArticleSets"] != null)
+            {
+                _cartManager.CurrentArticleSets = (List<ArticleSet>)Session["CurrentArticleSets"];
+            }
+        }
+
         // EVENTS
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckSession();
             RequestAddedArticle();
             BindGridView();
         }
