@@ -35,7 +35,7 @@ namespace BusinessLogicLayer
             return true;
         }
 
-        private ArticleSet GetById(int id)
+        private ArticleSet GetArticleSetById(int id)
         {
             return _cart.ArticleSets.Find(x => x.Id == id);
         }
@@ -44,7 +44,7 @@ namespace BusinessLogicLayer
         {
             if (ArticleExists(article.Id))
             {
-                GetById(article.Id).Amount += amount;
+                GetArticleSetById(article.Id).Amount += amount;
             }
             else
             {
@@ -64,9 +64,22 @@ namespace BusinessLogicLayer
             }
         }
 
-        public void Remove(Article article, int amount = 1) { }
+        public void Remove(int articleId, int amount = 1)
+        {
+            ArticleSet auxArticleSet = GetArticleSetById(articleId);
+            if (auxArticleSet.Amount != amount)
+            { // si la cantidad es distinta, se disminuye
+                auxArticleSet.Amount -= amount;
+                return;
+            }
+            Delete(articleId); // si la cantidad es igual, se elimina del carrito
+        }
 
-        public void Delete(Article article) { }
+        public void Delete(int articleId)
+        {
+            // Obtiene el set de articulos con el id del articulo y lo elimina
+            _cart.ArticleSets.Remove(GetArticleSetById(articleId));
+        }
 
         public void Clear()
         {
