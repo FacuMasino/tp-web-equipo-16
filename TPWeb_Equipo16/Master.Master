@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="Content/bootstrap.min.css" />
     <link rel="stylesheet" href="Content/bootstrap-icons.min.css" />
 </head>
+
 <body>
     <form id="mainForm" runat="server" class="d-flex flex-column min-vh-100">
         <header>
@@ -38,10 +39,12 @@
                 </div>
             </nav>
         </header>
+
         <div class="container-xxl px-4">
             <asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
         <div class="offcanvas offcanvas-end" tabindex="-1" id="cartList" aria-labelledby="cartListLabel">
             <div class="offcanvas-header">
                 <h5 id="cartListLabel">Tu Carrito (<%:_articleSets.Count()%>)</h5>
@@ -110,6 +113,7 @@
             </div>
             <%} // cierre bloque if%>
         </div>
+
         <div class="bg-body-tertiary mt-auto">
             <footer class="container-xxl py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
