@@ -45,20 +45,12 @@ namespace TPWeb_Equipo16
 
         private void BindGridView()
         {
-            List<ArticleSet> articleSets = new List<ArticleSet>();
-            ArticleSet a1 = new ArticleSet();
-            ArticleSet a2 = new ArticleSet();
-            a1.Amount = 4;
-            a2.Amount = 5;
-            a1.Name = "uno";
-            a2.Name = "dos";
-            articleSets.Add(a1);
-            articleSets.Add(a2);
-
             CartGridView.DataSource = _cartManager.List();
             CartGridView.DataBind();
+        }
 
-            // Max, esto es solo para probar
+        private void BindButtons()
+        {
             CartRepeater.DataSource = _cartManager.List();
             CartRepeater.DataBind();
         }
@@ -76,10 +68,12 @@ namespace TPWeb_Equipo16
         protected void Page_Load(object sender, EventArgs e)
         {
             CheckSession();
+
             if (!IsPostBack) // si es postback no bindear lista ni agregar article
             {
                 RequestAddedArticle();
                 BindGridView();
+                BindButtons();
             }
         }
 
@@ -87,7 +81,8 @@ namespace TPWeb_Equipo16
         {
             int id = Convert.ToInt32(((Button)sender).CommandArgument);
             _cartManager.Delete(id);
-            BindGridView(); // bindear y actualizar lista
+            BindGridView();
+            BindButtons();
         }
     }
 }

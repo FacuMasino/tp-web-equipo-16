@@ -1,0 +1,17 @@
+﻿.column-div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.half-vh
+{
+    height: 50vh
+}
+
+.text-align-center
+{
+    text-align:center
+}
