@@ -76,9 +76,11 @@ namespace TPWeb_Equipo16
         protected void Page_Load(object sender, EventArgs e)
         {
             CheckSession();
-            RequestAddedArticle();
-            if (!IsPostBack) // si es postback no bindear lista
+            if (!IsPostBack) // si es postback no bindear lista ni agregar article
+            {
+                RequestAddedArticle();
                 BindGridView();
+            }
         }
 
         protected void deteleButton_Click(object sender, EventArgs e)
