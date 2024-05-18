@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="Content/bootstrap.min.css" />
     <link rel="stylesheet" href="Content/bootstrap-icons.min.css" />
 </head>
+
 <body>
     <form id="mainForm" runat="server" class="d-flex flex-column min-vh-100">
         <header>
@@ -42,6 +43,7 @@
             <asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
         <div class="offcanvas offcanvas-end" tabindex="-1" id="cartList" aria-labelledby="cartListLabel">
             <div class="offcanvas-header">
                 <h5 id="cartListLabel">Tu Carrito (<%:_articleSets.Count()%>)</h5>
@@ -66,12 +68,12 @@
             %>
             <ul class="list-group list-group-lg list-group-flush mb-auto">
                 <%
-                    decimal subtotal = 0;
+                    decimal total = 0;
                     foreach (ArticleSet articleSet in _articleSets)
                     {
                         string placeholderUrl = "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg";
                         string imageUrl = placeholderUrl;
-                        subtotal += articleSet.Price * articleSet.Amount;
+                        total += articleSet.Price * articleSet.Amount;
                         if (0 < articleSet.Images.Count)
                         {
                             imageUrl = articleSet.Images[0].Url;
@@ -92,6 +94,10 @@
                                 <span class="text-muted">$<%:articleSet.Price%></span>
                                 <br>
                                 <span class="fw-normal">Cantidad:<%:articleSet.Amount%></span>
+                                  <br>
+                                <strong>Subtotal Item:</strong>
+                                <strong class="ms-auto">$ <%:articleSet.Price*articleSet.Amount  %></strong>
+
                             </p>
                         </div>
                     </div>
@@ -101,8 +107,8 @@
                 %>
             </ul>
             <div class="p-4 d-flex justify-content-between fs-sm bg-light mt-4">
-                <strong>Subtotal:</strong>
-                <strong class="ms-auto">$ <%:subtotal%></strong>
+                <strong>Total:</strong>
+                <strong class="ms-auto">$ <%:total%></strong>
             </div>
             <div class="d-flex p-4">
                 <a class="btn btn-primary w-100" href="ArticlesCartForm.aspx">Ir al carrito
@@ -110,6 +116,7 @@
             </div>
             <%} // cierre bloque if%>
         </div>
+
         <div class="bg-body-tertiary mt-auto">
             <footer class="container-xxl py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">

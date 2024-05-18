@@ -6,6 +6,15 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainPlaceHolder" runat="server">
 
+    <%
+        if (0 < _article.Id)
+        {
+    %>
+
+    <%
+        if (0 < _article.Id)
+        {
+    %>
     <div class="d-flex mt-auto flex-column align-items-center justify-content-center">
         <h4 class="text-align-center">Detalles del artículo</h4>
         <div class="col-7">
@@ -59,4 +68,7 @@
         </div>
     </div>
 
+    <%
+        }
+    %>
 </asp:Content>
