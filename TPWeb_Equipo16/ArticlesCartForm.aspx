@@ -22,9 +22,9 @@
     <asp:Repeater runat="server" ID="CartRepeater">
         <ItemTemplate>
             <div class="d-flex">
-                <span><%#Eval("Amount")%></span>
-                <span><%#Eval("Name")%></span>
-                <asp:Button Text="Eliminar" CssClass="btn btn-primary" CommandArgument='<%#Eval("Id")%>' Id="deteleButton" OnClick="deteleButton_Click" runat="server" />
+                <asp:Button Text="-" CssClass="btn btn-primary" CommandArgument='<%#Eval("Id")%>' Id="removeButton" OnClick="removeButton_Click" runat="server" />
+                <asp:Button Text="+" CssClass="btn btn-primary" CommandArgument='<%#Eval("Id")%>' Id="addButton" OnClick="addButton_Click" runat="server" />
+                <asp:Button Text="x" CssClass="btn btn-primary" CommandArgument='<%#Eval("Id")%>' Id="deteleButton" OnClick="deteleButton_Click" runat="server" />
             </div>
         </ItemTemplate>
     </asp:Repeater>

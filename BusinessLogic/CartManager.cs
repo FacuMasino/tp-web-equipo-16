@@ -8,6 +8,9 @@ namespace BusinessLogicLayer
         // ATTRIBUTES
 
         private Cart _cart;
+        private ArticleSet _articleSet;
+
+        // PROPERTIES
 
         public List<ArticleSet> CurrentArticleSets
         {
@@ -51,7 +54,7 @@ namespace BusinessLogicLayer
             }
             else
             {
-                ArticleSet aux = new ArticleSet
+                _articleSet = new ArticleSet
                 {
                     Id = article.Id,
                     Code = article.Code,
@@ -64,25 +67,30 @@ namespace BusinessLogicLayer
                     Amount = amount
                 };
 
-                _cart.ArticleSets.Add(aux);
+                _cart.ArticleSets.Add(_articleSet);
             }
+        }
+
+        public void Add(int id, int amount = 1)
+        {
+            GetArticleSetById(id).Amount += amount;
         }
 
         public void Remove(int articleId, int amount = 1)
         {
-            ArticleSet auxArticleSet = GetArticleSetById(articleId);
+            _articleSet = GetArticleSetById(articleId);
 
-            if (auxArticleSet.Amount != amount)
-            { // si la cantidad es distinta, se disminuye
-                auxArticleSet.Amount -= amount;
+            if (_articleSet.Amount != amount)
+            {
+                _articleSet.Amount -= amount;
                 return;
             }
 
-            Delete(articleId); // si la cantidad es igual, se elimina del carrito
+            Delete(articleId);
         }
 
         public void Delete(int articleId)
-        { // Obtiene el set de articulos con el id del articulo y lo elimina
+        {
             _cart.ArticleSets.Remove(GetArticleSetById(articleId));
         }
 

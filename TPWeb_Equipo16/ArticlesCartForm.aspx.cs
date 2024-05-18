@@ -49,7 +49,7 @@ namespace TPWeb_Equipo16
             CartGridView.DataBind();
         }
 
-        private void BindButtons()
+        private void BindRepeater()
         {
             CartRepeater.DataSource = _cartManager.List();
             CartRepeater.DataBind();
@@ -73,8 +73,24 @@ namespace TPWeb_Equipo16
             {
                 RequestAddedArticle();
                 BindGridView();
-                BindButtons();
+                BindRepeater();
             }
+        }
+
+        protected void removeButton_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            _cartManager.Remove(id);
+            BindGridView();
+            BindRepeater();
+        }
+
+        protected void addButton_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            _cartManager.Add(id);
+            BindGridView();
+            BindRepeater();
         }
 
         protected void deteleButton_Click(object sender, EventArgs e)
@@ -82,7 +98,7 @@ namespace TPWeb_Equipo16
             int id = Convert.ToInt32(((Button)sender).CommandArgument);
             _cartManager.Delete(id);
             BindGridView();
-            BindButtons();
+            BindRepeater();
         }
     }
 }
