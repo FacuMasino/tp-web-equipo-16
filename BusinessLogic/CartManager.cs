@@ -41,7 +41,7 @@ namespace BusinessLogicLayer
             return true;
         }
 
-        private ArticleSet GetArticleSetById(int id)
+        private ArticleSet ReadArticleSet(int id) // Me tomé el atrevimiento de cambiar el nombre de tu método Facu <3
         {
             return _cart.ArticleSets.Find(x => x.Id == id);
         }
@@ -50,7 +50,7 @@ namespace BusinessLogicLayer
         {
             if (ArticleExists(article.Id))
             {
-                GetArticleSetById(article.Id).Amount += amount;
+                Add(article.Id);
             }
             else
             {
@@ -71,14 +71,15 @@ namespace BusinessLogicLayer
             }
         }
 
-        public void Add(int id, int amount = 1)
+        public void Add(int articleId, int amount = 1)
         {
-            GetArticleSetById(id).Amount += amount;
+            _articleSet = ReadArticleSet(articleId);
+            _articleSet.Amount += amount;
         }
 
         public void Remove(int articleId, int amount = 1)
         {
-            _articleSet = GetArticleSetById(articleId);
+            _articleSet = ReadArticleSet(articleId);
 
             if (_articleSet.Amount != amount)
             {
@@ -91,7 +92,8 @@ namespace BusinessLogicLayer
 
         public void Delete(int articleId)
         {
-            _cart.ArticleSets.Remove(GetArticleSetById(articleId));
+            _articleSet = ReadArticleSet(articleId);
+            _cart.ArticleSets.Remove(_articleSet);
         }
 
         public void Clear()

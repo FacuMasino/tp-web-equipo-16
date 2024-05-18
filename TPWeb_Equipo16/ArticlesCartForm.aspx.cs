@@ -55,6 +55,12 @@ namespace TPWeb_Equipo16
             CartRepeater.DataBind();
         }
 
+        private void BindControls()
+        {
+            BindGridView();
+            BindRepeater();
+        }
+
         private void CheckSession()
         {
             if (Session["CurrentArticleSets"] != null)
@@ -72,8 +78,7 @@ namespace TPWeb_Equipo16
             if (!IsPostBack) // si es postback no bindear lista ni agregar article
             {
                 RequestAddedArticle();
-                BindGridView();
-                BindRepeater();
+                BindControls();
             }
         }
 
@@ -81,24 +86,21 @@ namespace TPWeb_Equipo16
         {
             int id = Convert.ToInt32(((Button)sender).CommandArgument);
             _cartManager.Remove(id);
-            BindGridView();
-            BindRepeater();
+            BindControls();
         }
 
         protected void addButton_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(((Button)sender).CommandArgument);
             _cartManager.Add(id);
-            BindGridView();
-            BindRepeater();
+            BindControls();
         }
 
         protected void deteleButton_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(((Button)sender).CommandArgument);
             _cartManager.Delete(id);
-            BindGridView();
-            BindRepeater();
+            BindControls();
         }
     }
 }
