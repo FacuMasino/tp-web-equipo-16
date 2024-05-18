@@ -38,7 +38,7 @@
                 </div>
             </nav>
         </header>
-        <div class="container-xxl px-4">
+        <div class="container-xxl mt-auto px-4">
             <asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
         </div>

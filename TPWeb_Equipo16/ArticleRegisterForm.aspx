@@ -6,8 +6,8 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainPlaceHolder" runat="server">
 
-    <h4 class="text-align-center">Detalles del artículo</h4>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex mt-auto flex-column align-items-center justify-content-center">
+        <h4 class="text-align-center">Detalles del artículo</h4>
         <div class="col-7">
             <div class="card mb-3">
                 <div class="row g-0">
@@ -47,8 +47,8 @@
                                 <p class="mb-0"><small class="text-body-secondary"><%:category%></small></p>
                                 <h5 class="card-title mb-0"><%:_article.Name%></h5>
                                 <p class="card-text"><small class="text-body-secondary"><%:_article.Brand.ToString()%></small></p>
-                            </div>
                             <p class="card-text"><%:_article.Description.ToString()%></p>
+                            </div>
 
                             <p class="card-text text-end fw-bold fs-5">$<%:_article.Price%></p>
 
