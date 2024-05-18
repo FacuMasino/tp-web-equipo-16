@@ -8,17 +8,17 @@
         <%
             foreach (Article article in Articles)
             {
-                string imageUrl = "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg";
+                string placeholderUrl = "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg";
+                string imageUrl = placeholderUrl;
 
-                if (0 < article.Images.Count && Helper.IsAccesibleImage(article.Images[0].Url))
+                if (0 < article.Images.Count)
                 {
-                    System.Diagnostics.Debug.Print(article.Images[0].Url);
                     imageUrl = article.Images[0].Url;
                 }
         %>
         <div class='col'>
             <div class="card">
-                <img src="<%:imageUrl%>" class="card-img-top" alt="...">
+                <img src="<%:imageUrl%>" class="card-img-top" alt="Imagen de <%:article.Name%>" onerror="this.src='<%:placeholderUrl%>'">
                 <div class="card-body">
                     <span class="mb-2 text-muted"><%:article.Category.ToString()%></span>
                     <h5 class="card-title fs-6"><%:article.Name%></h5>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.UI.WebControls;
 using BusinessLogicLayer;
 using Domain;
 
@@ -44,18 +45,20 @@ namespace TPWeb_Equipo16
 
         private void BindGridView()
         {
-            List<ArticleSet> articleSets = new List<ArticleSet>();
-            ArticleSet a1 = new ArticleSet();
-            ArticleSet a2 = new ArticleSet();
-            a1.Amount = 4;
-            a2.Amount = 5;
-            a1.Name = "uno";
-            a2.Name = "dos";
-            articleSets.Add(a1);
-            articleSets.Add(a2);
-
             CartGridView.DataSource = _cartManager.List();
             CartGridView.DataBind();
+        }
+
+        private void BindRepeater()
+        {
+            CartRepeater.DataSource = _cartManager.List();
+            CartRepeater.DataBind();
+        }
+
+        private void BindControls()
+        {
+            BindGridView();
+            BindRepeater();
         }
 
         private void CheckSession()
@@ -71,8 +74,33 @@ namespace TPWeb_Equipo16
         protected void Page_Load(object sender, EventArgs e)
         {
             CheckSession();
-            RequestAddedArticle();
-            BindGridView();
+
+            if (!IsPostBack) // si es postback no bindear lista ni agregar article
+            {
+                RequestAddedArticle();
+                BindControls();
+            }
+        }
+
+        protected void removeButton_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            _cartManager.Remove(id);
+            BindControls();
+        }
+
+        protected void addButton_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            _cartManager.Add(id);
+            BindControls();
+        }
+
+        protected void deteleButton_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            _cartManager.Delete(id);
+            BindControls();
         }
     }
 }

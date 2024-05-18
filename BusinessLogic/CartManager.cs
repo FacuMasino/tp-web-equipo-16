@@ -8,6 +8,9 @@ namespace BusinessLogicLayer
         // ATTRIBUTES
 
         private Cart _cart;
+        private ArticleSet _articleSet;
+
+        // PROPERTIES
 
         public List<ArticleSet> CurrentArticleSets
         {
@@ -31,11 +34,14 @@ namespace BusinessLogicLayer
         private bool ArticleExists(int id)
         {
             if (_cart.ArticleSets.Find(x => x.Id == id) == null)
+            {
                 return false;
+            }
+
             return true;
         }
 
-        private ArticleSet GetById(int id)
+        private ArticleSet ReadArticleSet(int id) // Me tomé el atrevimiento de cambiar el nombre de tu método Facu <3
         {
             return _cart.ArticleSets.Find(x => x.Id == id);
         }
@@ -44,11 +50,11 @@ namespace BusinessLogicLayer
         {
             if (ArticleExists(article.Id))
             {
-                GetById(article.Id).Amount += amount;
+                Add(article.Id);
             }
             else
             {
-                ArticleSet aux = new ArticleSet
+                _articleSet = new ArticleSet
                 {
                     Id = article.Id,
                     Code = article.Code,
@@ -60,13 +66,35 @@ namespace BusinessLogicLayer
                     Images = article.Images,
                     Amount = amount
                 };
-                _cart.ArticleSets.Add(aux);
+
+                _cart.ArticleSets.Add(_articleSet);
             }
         }
 
-        public void Remove(Article article, int amount = 1) { }
+        public void Add(int articleId, int amount = 1)
+        {
+            _articleSet = ReadArticleSet(articleId);
+            _articleSet.Amount += amount;
+        }
 
-        public void Delete(Article article) { }
+        public void Remove(int articleId, int amount = 1)
+        {
+            _articleSet = ReadArticleSet(articleId);
+
+            if (_articleSet.Amount != amount)
+            {
+                _articleSet.Amount -= amount;
+                return;
+            }
+
+            Delete(articleId);
+        }
+
+        public void Delete(int articleId)
+        {
+            _articleSet = ReadArticleSet(articleId);
+            _cart.ArticleSets.Remove(_articleSet);
+        }
 
         public void Clear()
         {
