@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.UI.WebControls;
 using BusinessLogicLayer;
 using Domain;
 
@@ -56,6 +57,10 @@ namespace TPWeb_Equipo16
 
             CartGridView.DataSource = _cartManager.List();
             CartGridView.DataBind();
+
+            // Max, esto es solo para probar
+            CartRepeater.DataSource = _cartManager.List();
+            CartRepeater.DataBind();
         }
 
         private void CheckSession()
@@ -72,7 +77,15 @@ namespace TPWeb_Equipo16
         {
             CheckSession();
             RequestAddedArticle();
-            BindGridView();
+            if (!IsPostBack) // si es postback no bindear lista
+                BindGridView();
+        }
+
+        protected void deteleButton_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            _cartManager.Delete(id);
+            BindGridView(); // bindear y actualizar lista
         }
     }
 }

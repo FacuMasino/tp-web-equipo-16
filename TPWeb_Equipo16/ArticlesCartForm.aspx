@@ -16,6 +16,17 @@
         </Columns>
     </asp:GridView>
 
+    <% // Implementacion de prueba %>
+    <asp:Repeater runat="server" ID="CartRepeater">
+        <ItemTemplate>
+            <div class="d-flex">
+                <span><%#Eval("Amount")%></span>
+                <span><%#Eval("Name")%></span>
+                <asp:Button Text="Eliminar" CssClass="btn btn-primary" CommandArgument='<%#Eval("Id")%>' Id="deteleButton" OnClick="deteleButton_Click" runat="server" />
+            </div>
+        </ItemTemplate>
+    </asp:Repeater>
+
     <%
         }
         else

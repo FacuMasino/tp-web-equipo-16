@@ -29,8 +29,8 @@
                         <div class="d-flex">
                             <button type="button" class="btn me-md-4 mt-2 position-relative" data-bs-toggle="offcanvas" data-bs-target="#cartList">
                                 <i class="bi bi-bag"></i>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">99+
-                                <span class="visually-hidden">Productos en el carrito</span>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><%:_articleSets.Count()%>
+                                    <span class="visually-hidden">Productos en el carrito</span>
                                 </span>
                             </button>
                         </div>
@@ -44,42 +44,39 @@
         </div>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="cartList" aria-labelledby="cartListLabel">
             <div class="offcanvas-header">
-                <h5 id="cartListLabel">Tu Carrito (2)</h5>
+                <h5 id="cartListLabel">Tu Carrito (<%:_articleSets.Count()%>)</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <ul class="list-group list-group-lg list-group-flush mb-auto">
+                <%
+                    foreach (ArticleSet articleSet in _articleSets)
+                    {
+                        string placeholderUrl = "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg";
+                        string imageUrl = placeholderUrl;
+
+                        if (0 < articleSet.Images.Count)
+                        {
+                            imageUrl = articleSet.Images[0].Url;
+                        }
+
+                %>
                 <li class="list-group-item">
                     <div class="row align-items-center">
                         <div class="col-4">
-                            <a href="ArticleReg.aspx?id=id">
-                                <img class="img-fluid" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="...">
+                            <a href="ViewArticle.aspx?id=<%:articleSet.Id%>">
+                                <img class="img-fluid" src="<%:imageUrl%>" alt="Imagen de <%:articleSet.Name%>" onerror="this.src='<%:placeholderUrl %>'">
                             </a>
                         </div>
                         <div class="col-8">
                             <p class="fs-sm fw-bold mb-6">
-                                <a class="text-body text-decoration-none" href="ArticleReg.aspx?id=id">Nombre Producto</a>
+                                <a class="text-body text-decoration-none" href="ArticleReg.aspx?id=id"><%:articleSet.Name%></a>
                                 <br>
-                                <span class="text-muted">$00.00</span>
+                                <span class="text-muted">$<%:articleSet.Price%></span>
                             </p>
                         </div>
                     </div>
                 </li>
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col-4">
-                            <a href="ArticleReg.aspx?id=id">
-                                <img class="img-fluid" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="...">
-                            </a>
-                        </div>
-                        <div class="col-8">
-                            <p class="fs-sm fw-bold mb-6">
-                                <a class="text-body text-decoration-none" href="ArticleReg.aspx?id=id">Nombre Producto</a>
-                                <br>
-                                <span class="text-muted">$00.00</span>
-                            </p>
-                        </div>
-                    </div>
-                </li>
+                <%} %>
             </ul>
             <div class="p-4 d-flex justify-content-between fs-sm bg-light mt-4">
                 <strong>Subtotal:</strong>
@@ -90,8 +87,8 @@
                 </a>
             </div>
         </div>
-        <div class="container-xxl px-4 bg-body-tertiary mt-auto">
-            <footer class="py-3 my-4">
+        <div class="bg-body-tertiary mt-auto">
+            <footer class="container-xxl py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item"><a href="Default.aspx" class="nav-link px-2 text-body-secondary">Tienda</a></li>
                     <li class="nav-item"><a href="ArticlesCardForm.aspx" class="nav-link px-2 text-body-secondary">Ir al carrito</a></li>
