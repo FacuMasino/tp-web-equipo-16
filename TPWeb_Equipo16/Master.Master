@@ -96,7 +96,7 @@
                                 <span class="fw-normal">Cantidad:<%:articleSet.Amount%></span>
                                   <br>
                                 <strong>Subtotal Item:</strong>
-                                <strong class="ms-auto">$ <%:articleSet.Price*articleSet.Amount  %></strong>
+                                <strong class="ms-auto">$ <%:articleSet.Subtotal%></strong>
 
                             </p>
                         </div>

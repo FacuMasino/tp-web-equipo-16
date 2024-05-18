@@ -5,12 +5,6 @@
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainPlaceHolder" runat="server">
-
-    <%
-        if (0 < _article.Id)
-        {
-    %>
-
     <%
         if (0 < _article.Id)
         {
@@ -56,7 +50,7 @@
                                 <p class="mb-0"><small class="text-body-secondary"><%:category%></small></p>
                                 <h5 class="card-title mb-0"><%:_article.Name%></h5>
                                 <p class="card-text"><small class="text-body-secondary"><%:_article.Brand.ToString()%></small></p>
-                            <p class="card-text"><%:_article.Description.ToString()%></p>
+                                <p class="card-text"><%:_article.Description.ToString()%></p>
                             </div>
 
                             <p class="card-text text-end fw-bold fs-5">$<%:_article.Price%></p>
