@@ -21,13 +21,13 @@
                     </Columns>
                 </asp:GridView>--%>
                 <ul class="list-group list-group-lg list-group-flush border-top mb-auto">
-                    <asp:Repeater runat="server" ID="CartRepeater">
+                    <asp:Repeater OnItemDataBound="CartRepeater_ItemDataBound" runat="server" ID="CartRepeater">
                         <ItemTemplate>
                             <li class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col-4">
                                         <a href="ViewArticle.aspx?id=<%#Eval("id")%>">
-                                            <img class="img-fluid" src="<%#Eval("images[0]?.Url") %>" alt="Imagen de <%#Eval("name")%>" onerror="this.src='https://www.kurin.com/wp-content/uploads/placeholder-square.jpg'">
+                                            <img class="img-fluid" id="articleImage" runat="server" onerror="this.src='https://www.kurin.com/wp-content/uploads/placeholder-square.jpg'">
                                         </a>
                                     </div>
                                     <div class="col-8">
