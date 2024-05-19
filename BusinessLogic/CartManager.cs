@@ -105,5 +105,10 @@ namespace BusinessLogicLayer
         {
             return _cart.ArticleSets.Count;
         }
+
+        public decimal GetTotal()
+        {
+            return _cart.Total;
+        }
     }
 }

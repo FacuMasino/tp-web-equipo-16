@@ -61,13 +61,13 @@
                 <div class="p-4 mb-4 bg-body-tertiary">
                     <ul class="list-group custom-list-group list-group-sm list-group-flush bg-body-tertiary">
                         <li class="list-group-item d-flex px-0 bg-transparent">
-                            <span>Subtotal</span> <span class="ms-auto fs-sm">$ <%%></span>
+                            <span>Subtotal</span> <span class="ms-auto fs-sm">$ <%:ArticlesCart.GetTotal()%></span>
                         </li>
                         <li class="list-group-item d-flex px-0 bg-transparent">
-                            <span>Iva 21%</span> <span class="ms-auto fs-sm">$<%// total*0.21 %></span>
+                            <span>Iva 21%</span> <span class="ms-auto fs-sm">$<%:(ArticlesCart.GetTotal() * (decimal)0.21).ToString()%></span>
                         </li>
                         <li class="list-group-item d-flex px-0 fs-lg fw-bold bg-transparent">
-                            <span>Total</span> <span class="ms-auto fs-sm">$ <% //total %></span>
+                            <span>Total</span> <span class="ms-auto fs-sm">$ <%:(ArticlesCart.GetTotal() * (decimal)1.21).ToString()%></span>
                         </li>
                         <li class="list-group-item fs-sm text-center text-gray-500 bg-transparent">Costos de envío calculados al momento del pago *
                         </li>
