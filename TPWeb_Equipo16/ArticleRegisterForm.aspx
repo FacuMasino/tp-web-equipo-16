@@ -52,8 +52,8 @@
                                 <p class="card-text"><%:_article.Description.ToString()%></p>
                             </div>
 
-                              <p class="card-text  fw-bold fs-5">$<%:_article.Price%></p>
-                            <a href ="ArticlesCartForm.aspx?Id=<%=_article.Id%>" class="btn btn-primary">Agregar al carrito </a> 
+                              <p class="card-text  fw-bold fs-5 align-self-end mt-auto">$<%:_article.Price%></p>
+                            <a href ="ArticlesCartForm.aspx?Id=<%=_article.Id%>" class="btn btn-dark">Agregar al carrito </a> 
                               
                               
                               
