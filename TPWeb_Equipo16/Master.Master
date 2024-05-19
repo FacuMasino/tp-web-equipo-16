@@ -6,9 +6,9 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><%: Page.Title %> - TPWeb</title>
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link rel="stylesheet" href="Content/bootstrap.min.css" />
     <link rel="stylesheet" href="Content/bootstrap-icons.min.css" />
 </head>
 
@@ -39,7 +39,7 @@
                 </div>
             </nav>
         </header>
-        <div class="container-xxl mt-auto px-4">
+        <div class="container-xxl m-auto px-4">
             <asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
         </div>

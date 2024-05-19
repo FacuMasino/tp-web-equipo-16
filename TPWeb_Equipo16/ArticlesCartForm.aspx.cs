@@ -45,8 +45,8 @@ namespace TPWeb_Equipo16
 
         private void BindGridView()
         {
-            CartGridView.DataSource = _cartManager.List();
-            CartGridView.DataBind();
+            //CartGridView.DataSource = _cartManager.List();
+            //CartGridView.DataBind();
         }
 
         private void BindRepeater()
@@ -57,7 +57,7 @@ namespace TPWeb_Equipo16
 
         private void BindControls()
         {
-            BindGridView();
+            //BindGridView();
             BindRepeater();
         }
 
@@ -82,23 +82,23 @@ namespace TPWeb_Equipo16
             }
         }
 
-        protected void removeButton_Click(object sender, EventArgs e)
+        protected void removeLnkButton_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            int id = Convert.ToInt32(((LinkButton)sender).CommandArgument);
             _cartManager.Remove(id);
             BindControls();
         }
 
-        protected void addButton_Click(object sender, EventArgs e)
+        protected void addLnkButton_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            int id = Convert.ToInt32(((LinkButton)sender).CommandArgument);
             _cartManager.Add(id);
             BindControls();
         }
 
-        protected void deteleButton_Click(object sender, EventArgs e)
+        protected void deleteLnkButton_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            int id = Convert.ToInt32(((LinkButton)sender).CommandArgument);
             _cartManager.Delete(id);
             BindControls();
         }
