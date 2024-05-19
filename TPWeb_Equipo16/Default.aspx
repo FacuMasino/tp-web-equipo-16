@@ -9,15 +9,20 @@
             <ul class="nav flex-column">
                 <!-- Filtro de categorías -->
                 <li class="nav-item">
-                    <a class="nav-link fs-lg text-reset border-bottom mb-6 px-2 fw-500 bg-body-tertiary" data-bs-toggle="collapse" href="#categoryCollapse" aria-expanded="true">Categorias
+                    <a class="nav-link fs-lg text-reset border-bottom mb-6 px-2 fw-500 bg-body-tertiary" data-bs-toggle="collapse" href="#categoriesCollapse" aria-expanded="true">Categorias
                     </a>
-                    <div class="collapse" id="categoryCollapse">
+                    <div class="collapse show" id="categoriesCollapse">
                         <ul class="list-group py-1 list-group-flush">
+                            <!-- Articulos sin filtro -->
+                            <li class="list-group-item pb-0 ps-2 border-0">
+                                <a href="Default.aspx" class="text-decoration-none text-black">Todas
+                                </a>
+                            </li>
                             <%
                                 foreach (Category category in Categories)
                                 {
                             %>
-                            <!-- Repetir con foreach -->
+                            <!-- Item Categoría -->
                             <li class="list-group-item pb-0 ps-2 border-0">
                                 <a href="Default.aspx?catId=<%:category.Id%>" class="text-decoration-none text-black"><%:category.Description%>
                                 </a>
@@ -33,6 +38,37 @@
                         </ul>
                     </div>
                 </li>
+                <!-- Filtro de Marcas -->
+                <li class="nav-item">
+                    <a class="nav-link fs-lg text-reset border-bottom mb-6 px-2 fw-500 bg-body-tertiary" data-bs-toggle="collapse" href="#brandsCollapse" aria-expanded="true">Marcas
+                    </a>
+                    <div class="collapse" id="brandsCollapse">
+                        <ul class="list-group py-1 list-group-flush">
+                            <!-- Articulos sin filtro -->
+                            <li class="list-group-item pb-0 ps-2 border-0">
+                                <a href="Default.aspx" class="text-decoration-none text-black">Todas
+                                </a>
+                            </li>
+                            <%
+                                foreach (Brand brand in Brands)
+                                {
+                            %>
+                            <!-- Item Marca -->
+                            <li class="list-group-item pb-0 ps-2 border-0">
+                                <a href="Default.aspx?brandId=<%:brand.Id%>" class="text-decoration-none text-black"><%:brand.Description%>
+                                </a>
+                            </li>
+                            <%
+                                }
+                            %>
+                            <!-- Artículos sin Marca -->
+                            <li class="list-group-item pb-0 ps-2 border-0">
+                                <a href="Default.aspx?brandId=-1" class="text-decoration-none text-black">Sin Marca
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
         <div class="col-9">
@@ -41,9 +77,9 @@
                     foreach (Article article in Articles)
                     {
                         string imageUrl = "Content/img/placeholder.jpg";
-                        string category = article.Category.ToString();
-                        category = category.Length == 0 ? "Sin Categoría" : category;
-
+                        string category = article.Category.Description;
+                        System.Diagnostics.Debug.Print(article.Name);
+                        System.Diagnostics.Debug.Print(article.Category.Description);
                         if (0 < article.Images.Count)
                         {
                             imageUrl = article.Images[0].Url;
@@ -53,7 +89,7 @@
                     <div class="card h-100">
                         <img src="<%:imageUrl%>" class="card-img-top" alt="Imagen de <%:article.Name%>" onerror="this.src='Content/img/placeholder.jpg'">
                         <div class="card-body d-flex flex-column">
-                            <span class="mb-2 text-muted"><%:category%></span>
+                            <span class="mb-2 text-muted"><%:category.Length==0?"Sin Categoría":category%></span>
                             <h5 class="card-title fs-6"><%:article.Name%></h5>
                             <p class="card-subtitle mb-2 text-muted fw-bold">$<%:article.Price%></p>
                             <div class='text-end mt-auto'>
