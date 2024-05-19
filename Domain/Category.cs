@@ -1,13 +1,15 @@
-﻿using System.ComponentModel;
-using System.Xml.Linq;
-
-namespace Domain
+﻿namespace Domain
 {
     public class Category
     {
         public int Id { get; set; }
 
         public string Description { get; set; }
+
+        public Category()
+        {
+            Description = "";
+        }
 
         public override string ToString()
         {

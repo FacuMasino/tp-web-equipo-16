@@ -31,6 +31,7 @@ namespace BusinessLogicLayer
                      * Estamos utilizando el operador de acceso condicional a miembros ?.
                      * Solo accede a la propiedad si el objeto no contiene null */
                     brand.Description = _dataAccess.Reader["Descripcion"]?.ToString();
+                    brand.Description = brand.Description ?? "";
 
                     brands.Add(brand);
                 }
@@ -62,6 +63,7 @@ namespace BusinessLogicLayer
                     brand.Id = id;
 
                     brand.Description = _dataAccess.Reader["Descripcion"]?.ToString();
+                    brand.Description = brand.Description ?? "";
                 }
             }
             catch (Exception ex)

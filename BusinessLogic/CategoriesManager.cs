@@ -26,6 +26,7 @@ namespace BusinessLogicLayer
                     category.Id = (int)_dataAccess.Reader["Id"];
 
                     category.Description = _dataAccess.Reader["Descripcion"]?.ToString();
+                    category.Description = category.Description ?? ""; // Si es null asigna cadena vacía
 
                     categories.Add(category);
                 }
@@ -56,7 +57,8 @@ namespace BusinessLogicLayer
                 {
                     category.Id = id;
 
-                    category.Description = (string)_dataAccess.Reader["Descripcion"]?.ToString();
+                    category.Description = _dataAccess.Reader["Descripcion"]?.ToString();
+                    category.Description = category.Description ?? "";
                 }
             }
             catch (Exception ex)
@@ -134,9 +136,7 @@ namespace BusinessLogicLayer
         public void PurgeCategory(Category category)
         {
             bool categoryInUse = CategoryIsInUse(category);
-            Debug.Print(
-                $"Verificando si la categoría {category} está en uso => {categoryInUse}"
-            );
+            Debug.Print($"Verificando si la categoría {category} está en uso => {categoryInUse}");
 
             if (!categoryInUse)
             {

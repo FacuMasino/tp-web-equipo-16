@@ -1,12 +1,15 @@
-﻿using System.ComponentModel;
-
-namespace Domain
+﻿namespace Domain
 {
     public class Brand
     {
         public int Id { get; set; }
 
         public string Description { get; set; }
+
+        public Brand()
+        {
+            Description = "";
+        }
 
         public override string ToString()
         {

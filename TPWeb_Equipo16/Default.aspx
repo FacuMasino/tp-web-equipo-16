@@ -7,6 +7,14 @@
     <div class="row py-5">
         <div class="col-3">
             <ul class="nav flex-column">
+                <li class="nav-item">
+                    <div class="input-group mb-3">
+<%--                        <input type="text" class="form-control" placeholder="Buscar producto" aria-label="Buscar producto" aria-describedby="searchBtn">--%>
+                        <%--<button class="btn btn-outline-secondary" type="button" id="searchBtn"><i class="bi bi-search"></i></button>--%>
+                        <asp:TextBox CssClass="form-control" ID="searchTextBox" runat="server" Text="Buscar producto"/>
+                        <asp:LinkButton Text='<i class="bi bi-search"></i>' ID="searchBtn" CssClass="btn btn-outline-secondary" runat="server" OnClick="searchBtn_Click"/>
+                    </div>
+                </li>
                 <!-- Filtro de categorías -->
                 <li class="nav-item">
                     <a class="nav-link fs-lg text-reset border-bottom mb-6 px-2 fw-500 bg-body-tertiary" data-bs-toggle="collapse" href="#categoriesCollapse" aria-expanded="true">Categorias

@@ -73,5 +73,7 @@ namespace TPWeb_Equipo16
         {
             CheckRequest(); // Verificar si se pasaron parámetros
         }
+
+        protected void searchBtn_Click(object sender, EventArgs e) { }
     }
 }
