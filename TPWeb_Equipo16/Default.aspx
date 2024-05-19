@@ -72,6 +72,10 @@
             </ul>
         </div>
         <div class="col-9">
+            <%
+                if (Articles.Count > 0)
+                {
+            %>
             <div class='row row-cols-1 row-cols-md-4 g-4'>
                 <%
                     foreach (Article article in Articles)
@@ -85,11 +89,12 @@
                             imageUrl = article.Images[0].Url;
                         }
                 %>
+
                 <div class='col'>
                     <div class="card h-100">
                         <img src="<%:imageUrl%>" class="card-img-top" alt="Imagen de <%:article.Name%>" onerror="this.src='Content/img/placeholder.jpg'">
                         <div class="card-body d-flex flex-column">
-                            <span class="mb-2 text-muted"><%:category.Length==0?"Sin Categoría":category%></span>
+                            <span class="mb-2 text-muted"><%:category.Length == 0 ? "Sin Categoría" : category%></span>
                             <h5 class="card-title fs-6"><%:article.Name%></h5>
                             <p class="card-subtitle mb-2 text-muted fw-bold">$<%:article.Price%></p>
                             <div class='text-end mt-auto'>
@@ -100,8 +105,24 @@
                     </div>
                 </div>
                 <%
+                        } // Fin foreach
                     }
+                    else // Mensaje si no hay artículos que mostrar
+                    {
                 %>
+                <div class="col">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="col-6 w-50">
+                            <h5 class="text-align-center">Ups! Parece que el artículo que buscas no existe...</h5>
+                            <img src="Content/img/Empty-Pana.svg" class="img-fluid object-fit-cover h-50">
+                        </div>
+                        <div class="col-6 text-center">
+                            <p>¡Puedes ver todos los artículos que tenemos para vos!</p>
+                            <a href="Default.aspx" class="btn btn-dark text-center" type="button">Ver Artículos</a>
+                        </div>
+                    </div>
+                </div>
+                <%} %>
             </div>
         </div>
     </div>
