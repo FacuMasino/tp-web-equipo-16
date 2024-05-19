@@ -23,7 +23,7 @@
                                     {
                                 %>
                                 <div class="carousel-item h-100 active">
-                                    <img src="<%: image.Url%>" class="object-fit-cover rounded-start d-block" alt="Imagen de <%:_article.Name%>" width="300px" height="100%" onerror="this.src='<%:placeholder%>'">
+                                    <img src="<%: image.Url%>" class="object-fit-cover rounded-start d-block" alt="Imagen de <%:_article.Name%>" width="300px" height="100%"  onerror="this.src='Content/img/placeholder.jpg'" />
                                 </div>
                                 <%
                                     }
@@ -45,15 +45,19 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body d-flex flex-column justify-content-between h-100">
-                            <div>
+                            <div >
                                 <p class="mb-0"><small class="text-body-secondary"><%:category%></small></p>
                                 <h5 class="card-title mb-0"><%:_article.Name%></h5>
                                 <p class="card-text"><small class="text-body-secondary"><%:_article.Brand.ToString()%></small></p>
                                 <p class="card-text"><%:_article.Description.ToString()%></p>
                             </div>
 
-                            <p class="card-text text-end fw-bold fs-5">$<%:_article.Price%></p>
-
+                              <p class="card-text  fw-bold fs-5">$<%:_article.Price%></p>
+                            <a href ="ArticlesCartForm.aspx?Id=<%=_article.Id%>" class="btn btn-primary">Agregar al carrito </a> 
+                              
+                              
+                              
+                            
                         </div>
                     </div>
                 </div>
