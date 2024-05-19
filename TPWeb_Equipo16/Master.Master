@@ -74,8 +74,7 @@
                     decimal total = 0;
                     foreach (ArticleSet articleSet in _articleSets)
                     {
-                        string placeholderUrl = "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg";
-                        string imageUrl = placeholderUrl;
+                        string imageUrl = "Content/img/placeholder.jpg";
                         total += articleSet.Price * articleSet.Amount;
                         if (0 < articleSet.Images.Count)
                         {
@@ -87,7 +86,7 @@
                     <div class="row align-items-center">
                         <div class="col-4">
                             <a href="ViewArticle.aspx?id=<%:articleSet.Id%>">
-                                <img class="img-fluid" src="<%:imageUrl%>" alt="Imagen de <%:articleSet.Name%>" onerror="this.src='<%:placeholderUrl %>'">
+                                <img class="img-fluid" src="<%:imageUrl%>" alt="Imagen de <%:articleSet.Name%>" onerror="this.src='Content/img/placeholder.jpg'">
                             </a>
                         </div>
                         <div class="col-8">

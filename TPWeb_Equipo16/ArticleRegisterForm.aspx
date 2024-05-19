@@ -18,7 +18,6 @@
                         <div id="carouselExampleIndicators" class="carousel slide h-100">
                             <div class="carousel-inner h-100">
                                 <%
-                                    string placeholder = "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg";
                                     string category = _article.Category.ToString() == "" ? "Sin Categoría" : _article.Category.ToString();
                                     foreach (Domain.Image image in _article.Images)
                                     {

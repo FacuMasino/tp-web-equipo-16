@@ -106,20 +106,27 @@ namespace TPWeb_Equipo16
 
         protected void CartRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            if (
+                e.Item.ItemType == ListItemType.Item
+                || e.Item.ItemType == ListItemType.AlternatingItem
+            )
             {
                 var dataItem = e.Item.DataItem as ArticleSet;
                 var articleImage = e.Item.FindControl("articleImage") as HtmlImage;
 
                 if (dataItem != null)
                 {
-                    if (dataItem.Images != null && dataItem.Images.Count > 0 && dataItem.Images[0] != null)
+                    if (
+                        dataItem.Images != null
+                        && dataItem.Images.Count > 0
+                        && dataItem.Images[0] != null
+                    )
                     {
                         articleImage.Src = dataItem.Images[0].Url;
                     }
                     else
                     {
-                        articleImage.Src = "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg";
+                        articleImage.Src = "Content/img/placeholder.jpg";
                     }
 
                     articleImage.Alt = $"Imagen de {dataItem.Name}";

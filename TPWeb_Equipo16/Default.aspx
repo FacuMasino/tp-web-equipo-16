@@ -8,22 +8,23 @@
         <%
             foreach (Article article in Articles)
             {
-                string placeholderUrl = "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg";
-                string imageUrl = placeholderUrl;
-
+                string imageUrl = "Content/img/placeholder.jpg";
+                string category = article.Category.ToString();
+                category = category.Length == 0 ? "Sin Categoría" : category;
+                
                 if (0 < article.Images.Count)
                 {
                     imageUrl = article.Images[0].Url;
                 }
         %>
         <div class='col'>
-            <div class="card">
-                <img src="<%:imageUrl%>" class="card-img-top" alt="Imagen de <%:article.Name%>" onerror="this.src='<%:placeholderUrl%>'">
-                <div class="card-body">
-                    <span class="mb-2 text-muted"><%:article.Category.ToString()%></span>
+            <div class="card h-100">
+                <img src="<%:imageUrl%>" class="card-img-top" alt="Imagen de <%:article.Name%>" onerror="this.src='Content/img/placeholder.jpg'">
+                <div class="card-body d-flex flex-column">
+                    <span class="mb-2 text-muted"><%:category%></span>
                     <h5 class="card-title fs-6"><%:article.Name%></h5>
                     <p class="card-subtitle mb-2 text-muted fw-bold">$<%:article.Price%></p>
-                    <div class='text-end'>
+                    <div class='text-end mt-auto'>
                         <a href='<%= "ArticlesCartForm.aspx?id=" + article.Id %>' class="btn fs-5"><i class="bi bi-cart-plus"></i></a>
                         <a href="ArticleRegisterForm.aspx?id=<%:article.Id%>" class="btn fs-5"><i class="bi bi-eye"></i></a>
                     </div>

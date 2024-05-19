@@ -12,31 +12,23 @@
         %>
         <div class="row gx-4 w-100 px-5 justify-content-center">
             <div class="col-8">
-                <%--                <asp:GridView ID="CartGridView" runat="server" AutoGenerateColumns="false" CssClass="table table-light table-bordered">
-                    <Columns>
-                        <asp:BoundField HeaderText="Cantidad" DataField="Amount" />
-                        <asp:BoundField HeaderText="Nombre" DataField="Name" />
-                        <asp:BoundField HeaderText="Marca" DataField="Brand" />
-                        <asp:BoundField HeaderText="Precio" DataField="Price" />
-                    </Columns>
-                </asp:GridView>--%>
                 <ul class="list-group list-group-lg list-group-flush border-top mb-auto">
                     <asp:Repeater OnItemDataBound="CartRepeater_ItemDataBound" runat="server" ID="CartRepeater">
                         <ItemTemplate>
                             <li class="list-group-item">
-                                <div class="row align-items-center">
+                                <div class="row">
                                     <div class="col-4">
                                         <a href="ViewArticle.aspx?id=<%#Eval("id")%>">
-                                            <img class="img-fluid" id="articleImage" runat="server" onerror="this.src='https://www.kurin.com/wp-content/uploads/placeholder-square.jpg'">
+                                            <img class="img-fluid" id="articleImage" runat="server" onerror="this.src='Content/img/placeholder.jpg'">
                                         </a>
                                     </div>
-                                    <div class="col-8">
+                                    <div class="col-8 d-flex flex-column justify-content-between py-2">
                                         <div class="d-flex mb-2 fw-bold">
                                             <a class="text-body text-decoration-none" href="ArticleReg.aspx?id=<%#Eval("id")%>"><%#Eval("brand")%> - <%#Eval("name")%></a>
                                             <span class="text-muted ms-auto">$<%#Eval("price")%></span>
 
                                         </div>
-                                        <p class="text-muted mt-3 mb-2">Subtotal $<%#Eval("subtotal")%></p>
+                                        <p class="text-muted mb-auto">Subtotal $<%#Eval("subtotal")%></p>
                                         <div class="d-inline-flex align-items-center justify-content-between w-100">
                                             <div class="itemcount bg-body-tertiary">
                                                 <asp:LinkButton Text='<i class="bi bi-dash"></i>' CssClass="itemcount-control minus bg-body-tertiary text-decoration-none text-black fs-5 px-2" CommandArgument='<%#Eval("Id")%>' ID="removeLnkButton" OnClick="removeLnkButton_Click" runat="server" />
@@ -48,11 +40,6 @@
                                     </div>
                                 </div>
                             </li>
-                            <%--<div class="d-flex">
-                                <asp:Button Text="-" CssClass="itemcount-control minus bg-body-tertiary" CommandArgument='<%#Eval("Id")%>' ID="removeButton" OnClick="removeButton_Click" runat="server" />
-                                <asp:Button Text="+" CssClass=itemcount-control minus bg-body-tertiary" CommandArgument='<%#Eval("Id")%>' ID="addButton" OnClick="addButton_Click" runat="server" />
-                                <asp:Button Text="x" CssClass="btn btn-primary" CommandArgument='<%#Eval("Id")%>' ID="deteleButton" OnClick="deteleButton_Click" runat="server" />
-                            </div>--%>
                         </ItemTemplate>
                     </asp:Repeater>
                 </ul>
