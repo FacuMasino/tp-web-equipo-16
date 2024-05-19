@@ -6,6 +6,9 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><%: Page.Title %> - TPWeb</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="Content/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Content/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Content/favicon-16x16.png">
     <link rel="stylesheet" href="Content/bootstrap.min.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -94,7 +97,7 @@
                                 <span class="text-muted">$<%:articleSet.Price%></span>
                                 <br>
                                 <span class="fw-normal">Cantidad:<%:articleSet.Amount%></span>
-                                  <br>
+                                <br>
                                 <strong>Subtotal Item:</strong>
                                 <strong class="ms-auto">$ <%:articleSet.Subtotal%></strong>
 
