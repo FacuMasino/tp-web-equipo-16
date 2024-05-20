@@ -8,10 +8,13 @@
         <div class="col-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <div class="input-group mb-3">
-                        <asp:TextBox CssClass="form-control" ID="searchTextBox" runat="server" Text="" placeholder="Buscar producto" />
+                    <asp:Panel ID="searchPanel" runat="server" CssClass="input-group mb-3" DefaultButton="searchBtn">
+                        <asp:TextBox CssClass="form-control" ID="searchTextBox" runat="server" Text="" placeholder="Buscar producto" required/>
                         <asp:LinkButton Text='<i class="bi bi-search"></i>' ID="searchBtn" CssClass="btn btn-outline-secondary" runat="server" OnClick="searchBtn_Click" />
-                    </div>
+                        <div class="invalid-feedback">
+                            Ingrese al menos 2 caracteres.    
+                        </div>
+                    </asp:Panel>
                 </li>
                 <!-- Filtro de categorías -->
                 <li class="nav-item">

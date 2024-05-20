@@ -82,6 +82,7 @@ namespace TPWeb_Equipo16
 
             if (2 < filter.Length)
             {
+                searchPanel.CssClass = "input-group mb-3";
                 Articles = Articles.FindAll(
                     x =>
                         x.Name.ToUpper().Contains(filter.ToUpper())
@@ -90,6 +91,10 @@ namespace TPWeb_Equipo16
                         || x.Code.ToUpper().Contains(filter.ToUpper())
                         || x.Description.ToUpper().Contains(filter.ToUpper())
                 );
+            }
+            else
+            {
+                searchPanel.CssClass = "input-group mb-3 invalid";
             }
         }
     }
