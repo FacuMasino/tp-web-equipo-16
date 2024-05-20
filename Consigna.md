@@ -11,7 +11,7 @@ A medida que se agregan items al carrito se debería poder visualizar la cantida
 Para los productos ya cuentan con las clases correspondientes. Para el carrito de compras, deberán crear lo necesario. La información del carrito de compras NO se almacena en la base de datos, dicha información deberá mantenerse actualizada en la sesión del servidor.
 
 
-###Consideraciones:
+### Consideraciones:
 
 No hay que realizar conexiones nuevas a bases de datos.
 Pueden mejorar las conexiones existentes agregando la clase Acceso a Datos.
