@@ -97,12 +97,12 @@
                             <p class="fs-sm fw-bold mb-6">
                                 <a class="text-body text-decoration-none" href="ArticleReg.aspx?id=id"><%:articleSet.Name%></a>
                                 <br>
-                                <span class="text-muted">$<%:articleSet.Price%></span>
+                                <span class="text-muted">$<%:articleSet.Price .ToString("0.00")%></span>
                                 <br>
                                 <span class="fw-normal">Cantidad:<%:articleSet.Amount%></span>
                                 <br>
                                 <strong>Subtotal Item:</strong>
-                                <strong class="ms-auto">$ <%:articleSet.Subtotal%></strong>
+                                <strong class="ms-auto">$ <%:articleSet.Subtotal .ToString("0.00")%></strong>
 
                             </p>
                         </div>

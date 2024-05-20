@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ArticlesCartForm.aspx.cs" Inherits="TPWeb_Equipo16.ArticlesCartForm" %>
+﻿<%@ Page Title="Tu Carrito" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ArticlesCartForm.aspx.cs" Inherits="TPWeb_Equipo16.ArticlesCartForm" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <link href="CSS/Style.css" rel="stylesheet" />
@@ -18,13 +18,13 @@
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-4">
-                                        <a href="ViewArticle.aspx?id=<%#Eval("id")%>">
+                                        <a href="ArticleRegisterForm.aspx?id=<%#Eval("id")%>">
                                             <img class="img-fluid" id="articleImage" runat="server" onerror="this.src='Content/img/placeholder.jpg'">
                                         </a>
                                     </div>
                                     <div class="col-8 d-flex flex-column justify-content-between py-2">
                                         <div class="d-flex mb-2 fw-bold">
-                                            <a class="text-body text-decoration-none" href="ArticleReg.aspx?id=<%#Eval("id")%>"><%#Eval("brand")%> - <%#Eval("name")%></a>
+                                            <a class="text-body text-decoration-none" href="ArticleRegisterForm.aspx?id=<%#Eval("id")%>"><%#Eval("brand")%> - <%#Eval("name")%></a>
                                             <span class="text-muted ms-auto"> <%# Eval("price", "{0:C}")%></span>
                                          
 
