@@ -18,6 +18,7 @@ namespace TPWeb_Equipo16
         public List<Article> Articles { get; set; }
         public List<Category> Categories { get; }
         public List<Brand> Brands { get; }
+        public int TotalArticles;
 
         // CONSTRUCT
 
@@ -29,6 +30,7 @@ namespace TPWeb_Equipo16
             Articles = _articlesManager.List();
             Categories = _categoriesManager.List();
             Brands = _brandsManager.List();
+            TotalArticles = Articles.Count; // Total de articulos que permanece original
         }
 
         // METHODS
@@ -80,12 +82,13 @@ namespace TPWeb_Equipo16
 
             if (2 < filter.Length)
             {
-                Articles = Articles.FindAll(x =>
-                    x.Name.ToUpper().Contains(filter.ToUpper())
-                    || x.Category.ToString().ToUpper().Contains(filter.ToUpper())
-                    || x.Brand.ToString().ToUpper().Contains(filter.ToUpper())
-                    || x.Code.ToUpper().Contains(filter.ToUpper())
-                    || x.Description.ToUpper().Contains(filter.ToUpper())
+                Articles = Articles.FindAll(
+                    x =>
+                        x.Name.ToUpper().Contains(filter.ToUpper())
+                        || x.Category.ToString().ToUpper().Contains(filter.ToUpper())
+                        || x.Brand.ToString().ToUpper().Contains(filter.ToUpper())
+                        || x.Code.ToUpper().Contains(filter.ToUpper())
+                        || x.Description.ToUpper().Contains(filter.ToUpper())
                 );
             }
         }

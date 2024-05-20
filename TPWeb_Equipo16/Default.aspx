@@ -9,10 +9,8 @@
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <div class="input-group mb-3">
-<%--                        <input type="text" class="form-control"  placeholder="Buscar producto" aria-label="Buscar producto" aria-describedby="searchBtn">--%>
-                        <%--<button class="btn btn-outline-secondary" type="button" id="searchBtn"><i class="bi bi-search"></i></button>--%>
-                        <asp:TextBox CssClass="form-control" ID="searchTextBox" runat="server" Text="" placeholder="Buscar producto"/>
-                        <asp:LinkButton Text='<i class="bi bi-search"></i>' ID="searchBtn" CssClass="btn btn-outline-secondary" runat="server" OnClick="searchBtn_Click"/>
+                        <asp:TextBox CssClass="form-control" ID="searchTextBox" runat="server" Text="" placeholder="Buscar producto" />
+                        <asp:LinkButton Text='<i class="bi bi-search"></i>' ID="searchBtn" CssClass="btn btn-outline-secondary" runat="server" OnClick="searchBtn_Click" />
                     </div>
                 </li>
                 <!-- Filtro de categorías -->
@@ -103,35 +101,45 @@
                         <img src="<%:imageUrl%>" class="card-img-top" alt="Imagen de <%:article.Name%>" onerror="this.src='Content/img/placeholder.jpg'">
                         <div class="card-body d-flex flex-column">
                             <span class="mb-2 text-muted"><%:category.Length == 0 ? "Sin Categoría" : category%></span>
-                            <h5 class="card-title fs-6"><%:article.Name%></h5>
-                            <p class="card-subtitle mb-2 text-muted fw-bold">$<%:article.Price.ToString("0.00")%></p>
-                            <div class='text-end mt-auto'>
-                                <a href='<%= "ArticlesCartForm.aspx?id=" + article.Id %>' class="btn fs-5"><i class="bi bi-cart-plus"></i></a>
-                                <a href="ArticleRegisterForm.aspx?id=<%:article.Id%>" class="btn fs-5"><i class="bi bi-eye"></i></a>
+                            <h5 class="card-title fs-6 mb-0"><%:article.Name%></h5>
+                            <small class="text-body-secondary mb-2"><%:article.Brand.ToString() %></small>
+                            <p class="card-subtitle mb-0 mt-auto text-muted pe-3 fw-bold">$<%:article.Price.ToString("0.00")%></p>
+                            <div class='d-flex justify-content-end mt-auto'>
+                                <a href='<%= "ArticlesCartForm.aspx?id=" + article.Id %>' class="btn py-0 fs-5"><i class="bi bi-cart-plus"></i></a>
+                                <a href="ArticleRegisterForm.aspx?id=<%:article.Id%>" class="btn py-0 fs-5"><i class="bi bi-eye"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <%
-                        } // Fin foreach
-                    }
-                    else // Mensaje si no hay artículos que mostrar
-                    {
+                    } // Fin foreach
+                    if (Articles.Count != TotalArticles) // Si la cantidad es distinta, está filtrando
+                    { // Mostrar un link para volver a ver todos
                 %>
-                <div class="col">
-                    <div class="d-flex flex-column align-items-center">
-                        <div class="col-6 w-50">
-                            <h5 class="text-align-center">Ups! Parece que el artículo que buscas no existe...</h5>
-                            <img src="Content/img/Empty-Pana.svg" class="img-fluid object-fit-cover h-50">
-                        </div>
-                        <div class="col-6 text-center">
-                            <p>¡Puedes ver todos los artículos que tenemos para vos!</p>
-                            <a href="Default.aspx" class="btn btn-dark text-center" type="button">Ver Artículos</a>
-                        </div>
+            </div>
+            <div class="col text-center mt-4">
+                <a href="Default.aspx" class="text-black">Ver Todos los artículos</a>
+            </div>
+            <%
+                    }
+                }
+                else // Mensaje si no hay artículos que mostrar
+                {
+            %>
+            <div class="col">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="col-6 w-50">
+                        <h5 class="text-align-center">Ups! Parece que el artículo que buscas no existe...</h5>
+                        <img src="Content/img/Empty-Pana.svg" class="img-fluid object-fit-cover h-50">
+                    </div>
+                    <div class="col-6 text-center">
+                        <p>¡Puedes ver todos los artículos que tenemos para vos!</p>
+                        <a href="Default.aspx" class="btn btn-dark text-center" type="button">Ver Artículos</a>
                     </div>
                 </div>
-                <%} %>
             </div>
+            <%} %>
         </div>
+    </div>
     </div>
 </asp:Content>

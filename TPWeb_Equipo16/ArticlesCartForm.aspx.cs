@@ -44,12 +44,6 @@ namespace TPWeb_Equipo16
             }
         }
 
-        private void BindGridView()
-        {
-            //CartGridView.DataSource = _cartManager.List();
-            //CartGridView.DataBind();
-        }
-
         private void BindRepeater()
         {
             CartRepeater.DataSource = _cartManager.List();
