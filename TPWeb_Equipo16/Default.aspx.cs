@@ -74,6 +74,20 @@ namespace TPWeb_Equipo16
             CheckRequest(); // Verificar si se pasaron parámetros
         }
 
-        protected void searchBtn_Click(object sender, EventArgs e) { }
+        protected void searchBtn_Click(object sender, EventArgs e)
+        {
+            string filter = searchTextBox.Text;
+
+            if (2 < filter.Length)
+            {
+                Articles = Articles.FindAll(x =>
+                    x.Name.ToUpper().Contains(filter.ToUpper())
+                    || x.Category.ToString().ToUpper().Contains(filter.ToUpper())
+                    || x.Brand.ToString().ToUpper().Contains(filter.ToUpper())
+                    || x.Code.ToUpper().Contains(filter.ToUpper())
+                    || x.Description.ToUpper().Contains(filter.ToUpper())
+                );
+            }
+        }
     }
 }

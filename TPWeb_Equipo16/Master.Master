@@ -114,7 +114,7 @@
             </ul>
             <div class="p-4 d-flex justify-content-between fs-sm bg-light mt-4">
                 <strong>Total:</strong>
-                <strong class="ms-auto">$ <%:total%></strong>
+                <strong class="ms-auto">$ <%:total.ToString("0.00")%></strong>
             </div>
             <div class="d-flex p-4">
                 <a class="btn btn-primary w-100" href="ArticlesCartForm.aspx">Ir al carrito
