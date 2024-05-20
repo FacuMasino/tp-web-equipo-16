@@ -104,7 +104,7 @@
                         <div class="card-body d-flex flex-column">
                             <span class="mb-2 text-muted"><%:category.Length == 0 ? "Sin Categoría" : category%></span>
                             <h5 class="card-title fs-6"><%:article.Name%></h5>
-                            <p class="card-subtitle mb-2 text-muted fw-bold">$<%:article.Price%></p>
+                            <p class="card-subtitle mb-2 text-muted fw-bold">$<%:article.Price.ToString("0.00")%></p>
                             <div class='text-end mt-auto'>
                                 <a href='<%= "ArticlesCartForm.aspx?id=" + article.Id %>' class="btn fs-5"><i class="bi bi-cart-plus"></i></a>
                                 <a href="ArticleRegisterForm.aspx?id=<%:article.Id%>" class="btn fs-5"><i class="bi bi-eye"></i></a>

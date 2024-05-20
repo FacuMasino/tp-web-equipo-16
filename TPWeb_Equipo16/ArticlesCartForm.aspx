@@ -25,10 +25,13 @@
                                     <div class="col-8 d-flex flex-column justify-content-between py-2">
                                         <div class="d-flex mb-2 fw-bold">
                                             <a class="text-body text-decoration-none" href="ArticleReg.aspx?id=<%#Eval("id")%>"><%#Eval("brand")%> - <%#Eval("name")%></a>
-                                            <span class="text-muted ms-auto">$<%#Eval("price")%></span>
+                                            <span class="text-muted ms-auto"> <%# Eval("price", "{0:C}")%></span>
+                                         
+
+                                            
 
                                         </div>
-                                        <p class="text-muted mb-auto">Subtotal $<%#Eval("subtotal")%></p>
+                                        <p class="text-muted mb-auto">Subtotal <%# Eval("subtotal", "{0:C}")%></p>
                                         <div class="d-inline-flex align-items-center justify-content-between w-100">
                                             <div class="itemcount bg-body-tertiary">
                                                 <asp:LinkButton Text='<i class="bi bi-dash"></i>' CssClass="itemcount-control minus bg-body-tertiary text-decoration-none text-black fs-5 px-2" CommandArgument='<%#Eval("Id")%>' ID="removeLnkButton" OnClick="removeLnkButton_Click" runat="server" />
@@ -48,13 +51,13 @@
                 <div class="p-4 mb-4 bg-body-tertiary">
                     <ul class="list-group custom-list-group list-group-sm list-group-flush bg-body-tertiary">
                         <li class="list-group-item d-flex px-0 bg-transparent">
-                            <span>Subtotal</span> <span class="ms-auto fs-sm">$ <%:ArticlesCart.GetTotal()%></span>
+                            <span>Subtotal</span> <span class="ms-auto fs-sm">$ <%:ArticlesCart.GetTotal() .ToString("0.00")%></span>
                         </li>
                         <li class="list-group-item d-flex px-0 bg-transparent">
-                            <span>Iva 21%</span> <span class="ms-auto fs-sm">$<%:(ArticlesCart.GetTotal() * (decimal)0.21).ToString()%></span>
+                            <span>Iva 21%</span> <span class="ms-auto fs-sm">$<%:(ArticlesCart.GetTotal() * (decimal)0.21).ToString("0.00")%></span>
                         </li>
                         <li class="list-group-item d-flex px-0 fs-lg fw-bold bg-transparent">
-                            <span>Total</span> <span class="ms-auto fs-sm">$ <%:(ArticlesCart.GetTotal() * (decimal)1.21).ToString()%></span>
+                            <span>Total</span> <span class="ms-auto fs-sm">$ <%:(ArticlesCart.GetTotal() * (decimal)1.21).ToString("0.00")%></span>
                         </li>
                         <li class="list-group-item fs-sm text-center text-gray-500 bg-transparent">Costos de envío calculados al momento del pago *
                         </li>
